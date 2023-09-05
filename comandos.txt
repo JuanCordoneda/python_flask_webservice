@@ -1,0 +1,5 @@
+# Construir la imagen Docker
+docker build -t nombre_del_contenedor .
+
+# Ejecutar el contenedor
+docker run -p 5000:5000 nombre_del_contenedor
