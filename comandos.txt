@@ -1,5 +1,15 @@
+--OPCION 1 PARA INSTALAR CON DOCKER:
+
 # Construir la imagen Docker
-docker build -t nombre_del_contenedor .
+Docker build -t bnka_api_1 .
 
 # Ejecutar el contenedor
-docker run -p 5000:5000 nombre_del_contenedor
+docker run -p 5000:5000 bnka_api_1
+
+--OPCION 2 PARA INSTALAR CON FLASK (MAS EFICIENTE PARA DEBUGGEAR):
+
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Ejecutar la app
+python app.py
