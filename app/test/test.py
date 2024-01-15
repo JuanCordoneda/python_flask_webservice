@@ -1,7 +1,7 @@
 import unittest
 import json
-from app import app  # Importa tu aplicación Flask
-from app.controllers.products_service_controller import NumberController
+from app import app
+from app.controllers.number_controller import NumberController
 
 class TestApp(unittest.TestCase):
     def setUp(self):

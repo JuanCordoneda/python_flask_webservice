@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify
-from app.controllers.products_service_controller import NumberController
+from flask import Blueprint, Flask, request, jsonify
+from app.controllers.number_controller import NumberController
 
 
 app = Flask(__name__)
 number_controller = NumberController()
-
+number_ruotes = Blueprint("number_controller", __name__)
 
 @app.route('/add_number', methods=['POST'])
 def add_number():
