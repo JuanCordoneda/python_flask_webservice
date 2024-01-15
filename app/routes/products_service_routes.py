@@ -1,30 +1,42 @@
-# app/routes/products_service_routes.py
+from flask import Flask, request, jsonify
+from app.controllers.products_service_controller import NumberController
 
-from flask import Blueprint, request, jsonify
-from app.controllers.products_service_controller import ProductsServiceController
 
-products_service_bp = Blueprint("products_service", __name__)
+app = Flask(__name__)
+number_controller = NumberController()
 
-products_service_controller = ProductsServiceController()  # Create an instance of the products controller
 
-@products_service_bp.route("/products_service", methods=["GET"])
-def get_products():
-    return products_service_controller.get_all_products()
+@app.route('/add_number', methods=['POST'])
+def add_number():
+    data = request.json
+    number = data['number']
+    number_controller.add_number(number)
+    return jsonify({'message': 'Number added successfully'}), 201
 
-@products_service_bp.route("/products_service/<int:product_id>", methods=["GET"])
-def get_product(product_id):
-    return products_service_controller.get_product_by_id(product_id)
 
-@products_service_bp.route("/products_service", methods=["POST"])
-def create_product():
-    data = request.get_json()
-    return products_service_controller.create_product(data)
+@app.route('/get_number/<int:number>', methods=['GET'])
+def get_number(number):
+    result = number_controller.get_number(number)
+    if result is not None:
+        return jsonify({'value': result})
+    else:
+        return jsonify({'error': 'Number not found'}), 404
 
-@products_service_bp.route("/products_service/<int:product_id>", methods=["PUT"])
-def update_product(product_id):
-    data = request.get_json()
-    return products_service_controller.update_product(product_id, data)
 
-@products_service_bp.route("/products_service/<int:product_id>", methods=["DELETE"])
-def delete_product(product_id):
-    return products_service_controller.delete_product(product_id)
+@app.route('/get_all_numbers', methods=['GET'])
+def get_all_numbers():
+    return jsonify({'collection': number_controller.get_all_numbers()})
+
+
+@app.route('/update_number/<int:number>', methods=['PUT'])
+def update_number(number):
+    data = request.json
+    updated_number = data['number']
+    if number_controller.update_number(number, updated_number):
+        return jsonify({'message': 'Number updated successfully'}), 200
+    else:
+        return jsonify({'error': 'Number not found'}), 404
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
