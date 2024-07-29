@@ -2,16 +2,18 @@
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 from config.config import Config
-from app.routes.products_service_routes import products_service_bp
-from app.routes.products_bd_routes import products_bd_bp
+from app.routes.entidades_routes import entidades_bp
 
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 
-app.register_blueprint(products_service_bp)  # Registra el Blueprint de productos service
-app.register_blueprint(products_bd_bp)  # Registra el Blueprint de productos bd
+# Configurar CORS
+CORS(app)
+
+app.register_blueprint(entidades_bp, url_prefix='/api')
 
 if __name__ == "__main__":
     app.run(debug=True)
