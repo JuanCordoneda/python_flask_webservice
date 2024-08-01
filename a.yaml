@@ -1,0 +1,191 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Colección para interactuar con la API de Entidades",
+    "version": "1.0.0",
+    "title": "Entidades API",
+    "contact": {
+      "email": "tuemail@dominio.com"
+    }
+  },
+  "host": "127.0.0.1:5000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "entidades",
+      "description": "Operaciones relacionadas con entidades"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/entidades": {
+      "get": {
+        "tags": [
+          "entidades"
+        ],
+        "summary": "Obtener todas las entidades",
+        "description": "Obtiene una lista de todas las entidades",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de entidades",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Entidad"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "entidades"
+        ],
+        "summary": "Crear una nueva entidad",
+        "description": "Crea una nueva entidad con los datos proporcionados",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Entidad a ser creada",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Entidad"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Entidad creada",
+            "schema": {
+              "$ref": "#/definitions/Entidad"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Entidad": {
+      "type": "object",
+      "required": [
+        "NUMERO_PROSA",
+        "TIE_NUMERO",
+        "DESCRIPCION",
+        "NUMERO_FIID"
+      ],
+      "properties": {
+        "NUMERO_PROSA": {
+          "type": "number",
+          "format": "float",
+          "description": "El número PROSA de la entidad"
+        },
+        "TIE_NUMERO": {
+          "type": "integer",
+          "description": "El número TIE de la entidad"
+        },
+        "DESCRIPCION": {
+          "type": "string",
+          "description": "La descripción de la entidad"
+        },
+        "NUMERO_FIID": {
+          "type": "string",
+          "description": "El número FIID de la entidad"
+        },
+        "NUMERO_TSYS_EMI": {
+          "type": "string",
+          "description": "El número TSYS EMI de la entidad",
+          "nullable": true
+        },
+        "NUMERO_TSYS_ADQ": {
+          "type": "string",
+          "description": "El número TSYS ADQ de la entidad",
+          "nullable": true
+        },
+        "DESC_VENTAS": {
+          "type": "string",
+          "description": "La descripción de ventas de la entidad",
+          "nullable": true
+        },
+        "DESC_PAGOS": {
+          "type": "string",
+          "description": "La descripción de pagos de la entidad",
+          "nullable": true
+        },
+        "NUMERO_LN": {
+          "type": "string",
+          "description": "El número LN de la entidad",
+          "nullable": true
+        },
+        "GCO_NUMERO": {
+          "type": "number",
+          "format": "float",
+          "description": "El número GCO de la entidad",
+          "nullable": true
+        },
+        "ID_UNICO_CARNET": {
+          "type": "string",
+          "description": "El ID único CARNET de la entidad",
+          "nullable": true
+        },
+        "TRANSCOD": {
+          "type": "number",
+          "format": "float",
+          "description": "El TRANSCOD de la entidad",
+          "nullable": true
+        },
+        "CAMARA": {
+          "type": "integer",
+          "description": "La cámara de la entidad"
+        },
+        "ID_BANXICO": {
+          "type": "number",
+          "format": "float",
+          "description": "El ID BANXICO de la entidad",
+          "nullable": true
+        },
+        "ENV_BANXICO": {
+          "type": "number",
+          "format": "float",
+          "description": "El ENV BANXICO de la entidad"
+        },
+        "RED_MCD_ID_01": {
+          "type": "string",
+          "description": "El RED MCD ID 01 de la entidad",
+          "nullable": true
+        },
+        "RED_MCD_ID_02": {
+          "type": "string",
+          "description": "El RED MCD ID 02 de la entidad",
+          "nullable": true
+        },
+        "RED_VSA_ID_01": {
+          "type": "string",
+          "description": "El RED VSA ID 01 de la entidad",
+          "nullable": true
+        },
+        "AMEX_CAP": {
+          "type": "string",
+          "description": "El AMEX CAP de la entidad",
+          "nullable": true
+        },
+        "IND_COLLECTION": {
+          "type": "string",
+          "description": "El IND COLLECTION de la entidad",
+          "nullable": true
+        }
+      }
+    }
+  }
+}

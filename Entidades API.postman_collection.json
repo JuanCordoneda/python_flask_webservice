@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "19144364-db79-43c7-b0e7-f1047fe543d3",
+		"name": "Entidades API",
+		"description": "Colección para interactuar con la API de Entidades",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13313000"
+	},
+	"item": [
+		{
+			"name": "Get All Entidades",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/entidades",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"entidades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Entidad",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"NUMERO_PROSA\": 372.0,\n    \"TIE_NUMERO\": 1,\n    \"DESCRIPCION\": \"PRODUCTOS INTEGRALES\",\n    \"NUMERO_FIID\": \"B372\",\n    \"NUMERO_TSYS_EMI\": null,\n    \"NUMERO_TSYS_ADQ\": null,\n    \"DESC_VENTAS\": \"\",\n    \"DESC_PAGOS\": \"\",\n    \"NUMERO_LN\": \"PRO1\",\n    \"GCO_NUMERO\": 12.0,\n    \"ID_UNICO_CARNET\": null,\n    \"TRANSCOD\": null,\n    \"CAMARA\": 1,\n    \"ID_BANXICO\": 0.0,\n    \"ENV_BANXICO\": 1.0,\n    \"RED_MCD_ID_01\": null,\n    \"RED_MCD_ID_02\": null, \"RED_VSA_ID_01\": null, \"AMEX_CAP\": null, \"IND_COLLECTION\": null}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/entidades",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"entidades"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
