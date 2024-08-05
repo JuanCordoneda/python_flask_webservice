@@ -34,7 +34,7 @@ def format_updated_response(data, message="Updated", code=200):
     return response
 
 # THIS RESPONSE IS USED FOR DELETIONS
-def format_deleted_response(message="Deleted", code=204):
+def format_deleted_response(message="Deleted", code=202):
     response = {
         "status": "success",
         "data": None,  # Usually, no data is sent back for deletions

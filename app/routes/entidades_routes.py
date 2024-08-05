@@ -17,3 +17,8 @@ def get_entidades():
 def create_entidad():
     data = request.get_json()
     return entidades_controller.create_entidad(data)
+
+@entidades_bp.route("/entidades/<int:entidad_id>", methods=["DELETE"])
+@auth.login_required
+def delete_entidad(entidad_id):
+    return entidades_controller.delete_entidad(entidad_id)

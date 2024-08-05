@@ -42,6 +42,14 @@ class EntidadesRepository:
             db.session.rollback()
             raise Exception(f"Error creating entity: {str(e)}")
 
+    def delete_entidad(self, entidad_id):
+        entidad = Entidad.query.get(entidad_id)
+        if entidad:
+            db.session.delete(entidad)
+            db.session.commit()
+            return True
+        return False
+
     # Método que convierte varias entidades a JSON
     def return_entidades(self, entidades):
         entidades_list = []

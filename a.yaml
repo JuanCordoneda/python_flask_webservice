@@ -74,6 +74,35 @@
           }
         }
       }
+    },
+    "/entidades/{entidad_id}": {
+      "delete": {
+        "tags": [
+          "entidades"
+        ],
+        "summary": "Eliminar una entidad",
+        "description": "Elimina una entidad por su ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "entidad_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID de la entidad a eliminar"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entidad eliminada correctamente"
+          },
+          "404": {
+            "description": "Entidad no encontrada"
+          }
+        }
+      }
     }
   },
   "definitions": {

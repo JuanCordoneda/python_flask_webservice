@@ -1,7 +1,7 @@
 # app/controllers/entidades_controller.py
 
 from app.repositories.entidades_repository import EntidadesRepository
-from app.dtos.response_standard import format_success_created_response, format_error_response, format_success_response
+from app.dtos.response_standard import format_success_created_response, format_error_response, format_success_response, format_deleted_response
 
 class EntidadesController:
     def __init__(self):
@@ -25,3 +25,13 @@ class EntidadesController:
             return format_success_created_response(new_entidad), 201
         except Exception as e:
             return format_error_response(str(e)), 500
+
+    def delete_entidad(self, entidad_id):
+            try:
+                deleted = self.entidades_repository.delete_entidad(entidad_id)
+                if deleted:
+                    return format_deleted_response('Entidad eliminada correctamente'), 202
+                else:
+                    return format_error_response("Entidad no encontrada"), 500
+            except Exception as e:
+                return format_error_response(str(e)), 500
