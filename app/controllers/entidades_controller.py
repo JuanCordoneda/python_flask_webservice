@@ -7,10 +7,16 @@ class EntidadesController:
     def __init__(self):
         self.entidades_repository = EntidadesRepository()
 
-    def get_all_entidades(self):
+    def get_all_entidades(self, page, per_page):
         try:
-            entidades = self.entidades_repository.get_all_entidades()
-            return format_success_response(entidades), 200
+            entidades, total = self.entidades_repository.get_all_entidades(page, per_page)
+            response = {
+                "total": total,
+                "page": page,
+                "per_page": per_page,
+                "entidades": entidades
+            }
+            return format_success_response(response), 200
         except Exception as e:
             return format_error_response(str(e)), 500
 

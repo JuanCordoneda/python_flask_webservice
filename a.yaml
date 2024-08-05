@@ -26,17 +26,59 @@
           "entidades"
         ],
         "summary": "Obtener todas las entidades",
-        "description": "Obtiene una lista de todas las entidades",
+        "description": "Obtiene una lista de todas las entidades con paginación",
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número de página",
+            "required": false,
+            "type": "integer",
+            "default": 1
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Número de entidades por página",
+            "required": false,
+            "type": "integer",
+            "default": 10
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token de autorización Bearer",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
             "description": "Lista de entidades",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Entidad"
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "integer",
+                  "description": "Número total de entidades"
+                },
+                "page": {
+                  "type": "integer",
+                  "description": "Número de la página actual"
+                },
+                "per_page": {
+                  "type": "integer",
+                  "description": "Número de entidades por página"
+                },
+                "entidades": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Entidad"
+                  }
+                }
               }
             }
           }
@@ -55,6 +97,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token de autorización Bearer",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "body",
             "name": "body",
@@ -92,6 +141,13 @@
             "required": true,
             "type": "integer",
             "description": "ID de la entidad a eliminar"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Token de autorización Bearer",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {

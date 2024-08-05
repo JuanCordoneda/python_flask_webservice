@@ -10,7 +10,9 @@ entidades_controller = EntidadesController()
 @entidades_bp.route("/entidades", methods=["GET"])
 @auth.login_required
 def get_entidades():
-    return entidades_controller.get_all_entidades()
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', 10, type=int)
+    return entidades_controller.get_all_entidades(page, per_page)
 
 @entidades_bp.route("/entidades", methods=["POST"])
 @auth.login_required

@@ -4,12 +4,10 @@ from app.models.entidades import Entidad
 from ..app import db
 
 class EntidadesRepository:
-    def get_all_entidades(self):
-        try:
-            entidades = Entidad.query.all()
-            return self.return_entidades(entidades)
-        except Exception as e:
-            raise Exception(f"Error retrieving all entities: {str(e)}")
+    def get_all_entidades(self, page, per_page):
+        entidades = Entidad.query.paginate(page, per_page, False)
+        total = entidades.total
+        return [entidad.to_dict() for entidad in entidades.items], total
 
     def create_entidad(self, data):
         try:
