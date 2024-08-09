@@ -12,26 +12,14 @@ class EntidadesRepository:
     def create_entidad(self, data):
         try:
             new_entidad = Entidad(
-                NUMERO_PROSA=data.get('NUMERO_PROSA'),
-                TIE_NUMERO=data.get('TIE_NUMERO'),
-                DESCRIPCION=data.get('DESCRIPCION'),
-                NUMERO_FIID=data.get('NUMERO_FIID'),
-                NUMERO_TSYS_EMI=data.get('NUMERO_TSYS_EMI'),
-                NUMERO_TSYS_ADQ=data.get('NUMERO_TSYS_ADQ'),
-                DESC_VENTAS=data.get('DESC_VENTAS'),
-                DESC_PAGOS=data.get('DESC_PAGOS'),
-                NUMERO_LN=data.get('NUMERO_LN'),
-                GCO_NUMERO=data.get('GCO_NUMERO'),
-                ID_UNICO_CARNET=data.get('ID_UNICO_CARNET'),
-                TRANSCOD=data.get('TRANSCOD'),
-                CAMARA=data.get('CAMARA'),
-                ID_BANXICO=data.get('ID_BANXICO'),
-                ENV_BANXICO=data.get('ENV_BANXICO'),
-                RED_MCD_ID_01=data.get('RED_MCD_ID_01'),
-                RED_MCD_ID_02=data.get('RED_MCD_ID_02'),
-                RED_VSA_ID_01=data.get('RED_VSA_ID_01'),
-                AMEX_CAP=data.get('AMEX_CAP'),
-                IND_COLLECTION=data.get('IND_COLLECTION')
+                id_entidad=data.get('id_entidad'),
+                nombre_entidad=data.get('nombre_entidad'),
+                fiid_pos=data.get('fiid_pos'),
+                fiid_atm=data.get('fiid_atm'),
+                fiid_online=data.get('fiid_online'),
+                id_banxico=data.get('id_banxico'),
+                id_emisor=data.get('id_emisor'),
+                id_adquirente=data.get('id_adquirente')
             )
             db.session.add(new_entidad)
             db.session.commit()
@@ -53,26 +41,14 @@ class EntidadesRepository:
         entidades_list = []
         for entidad in entidades:
             entidad_dict = {
-                "NUMERO_PROSA": entidad.NUMERO_PROSA,
-                "TIE_NUMERO": entidad.TIE_NUMERO,
-                "DESCRIPCION": entidad.DESCRIPCION,
-                "NUMERO_FIID": entidad.NUMERO_FIID,
-                "NUMERO_TSYS_EMI": entidad.NUMERO_TSYS_EMI,
-                "NUMERO_TSYS_ADQ": entidad.NUMERO_TSYS_ADQ,
-                "DESC_VENTAS": entidad.DESC_VENTAS,
-                "DESC_PAGOS": entidad.DESC_PAGOS,
-                "NUMERO_LN": entidad.NUMERO_LN,
-                "GCO_NUMERO": entidad.GCO_NUMERO,
-                "ID_UNICO_CARNET": entidad.ID_UNICO_CARNET,
-                "TRANSCOD": entidad.TRANSCOD,
-                "CAMARA": entidad.CAMARA,
-                "ID_BANXICO": entidad.ID_BANXICO,
-                "ENV_BANXICO": entidad.ENV_BANXICO,
-                "RED_MCD_ID_01": entidad.RED_MCD_ID_01,
-                "RED_MCD_ID_02": entidad.RED_MCD_ID_02,
-                "RED_VSA_ID_01": entidad.RED_VSA_ID_01,
-                "AMEX_CAP": entidad.AMEX_CAP,
-                "IND_COLLECTION": entidad.IND_COLLECTION
+                "id_entidad": entidad.id_entidad,
+                "nombre_entidad": entidad.nombre_entidad,
+                "fiid_pos": entidad.fiid_pos,
+                "fiid_atm": entidad.fiid_atm,
+                "fiid_online": entidad.fiid_online,
+                "id_banxico": entidad.id_banxico,
+                "id_emisor": entidad.id_emisor,
+                "id_adquirente": entidad.id_adquirente,
             }
             entidades_list.append(entidad_dict)
         return entidades_list
@@ -80,25 +56,13 @@ class EntidadesRepository:
     # Método que convierte una entidad a JSON
     def return_entidad(self, entidad):
         entidad_dict = {
-            "NUMERO_PROSA": entidad.NUMERO_PROSA,
-            "TIE_NUMERO": entidad.TIE_NUMERO,
-            "DESCRIPCION": entidad.DESCRIPCION,
-            "NUMERO_FIID": entidad.NUMERO_FIID,
-            "NUMERO_TSYS_EMI": entidad.NUMERO_TSYS_EMI,
-            "NUMERO_TSYS_ADQ": entidad.NUMERO_TSYS_ADQ,
-            "DESC_VENTAS": entidad.DESC_VENTAS,
-            "DESC_PAGOS": entidad.DESC_PAGOS,
-            "NUMERO_LN": entidad.NUMERO_LN,
-            "GCO_NUMERO": entidad.GCO_NUMERO,
-            "ID_UNICO_CARNET": entidad.ID_UNICO_CARNET,
-            "TRANSCOD": entidad.TRANSCOD,
-            "CAMARA": entidad.CAMARA,
-            "ID_BANXICO": entidad.ID_BANXICO,
-            "ENV_BANXICO": entidad.ENV_BANXICO,
-            "RED_MCD_ID_01": entidad.RED_MCD_ID_01,
-            "RED_MCD_ID_02": entidad.RED_MCD_ID_02,
-            "RED_VSA_ID_01": entidad.RED_VSA_ID_01,
-            "AMEX_CAP": entidad.AMEX_CAP,
-            "IND_COLLECTION": entidad.IND_COLLECTION
+            "id_entidad": entidad.id_entidad,
+            "nombre_entidad": entidad.nombre_entidad,
+            "fiid_pos": entidad.fiid_pos,
+            "fiid_atm": entidad.fiid_atm,
+            "fiid_online": entidad.fiid_online,
+            "id_banxico": entidad.id_banxico,
+            "id_emisor": entidad.id_emisor,
+            "id_adquirente": entidad.id_adquirente,
         }
         return entidad_dict

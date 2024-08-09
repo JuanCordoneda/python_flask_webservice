@@ -78,26 +78,14 @@ Para crear una nueva entidad, puedes usar Postman o cualquier otra herramienta p
 
 ```json
 {
-    "NUMERO_PROSA": 372.0,
-    "TIE_NUMERO": 1,
-    "DESCRIPCION": "PRODUCTOS INTEGRALES",
-    "NUMERO_FIID": "B372",
-    "NUMERO_TSYS_EMI": null,
-    "NUMERO_TSYS_ADQ": null,
-    "DESC_VENTAS": "",
-    "DESC_PAGOS": "",
-    "NUMERO_LN": "PRO1",
-    "GCO_NUMERO": 12.0,
-    "ID_UNICO_CARNET": null,
-    "TRANSCOD": null,
-    "CAMARA": 1,
-    "ID_BANXICO": 0.0,
-    "ENV_BANXICO": 1.0,
-    "RED_MCD_ID_01": null,
-    "RED_MCD_ID_02": null,
-    "RED_VSA_ID_01": null,
-    "AMEX_CAP": null,
-    "IND_COLLECTION": null
+    "id_entidad": 1,
+    "nombre_entidad": "PRODUCTOS INTEGRALES",
+    "fiid_pos": "B372",
+    "fiid_atm": "ATM1",
+    "fiid_online": "ONLINE1",
+    "id_banxico": 0.0,
+    "id_emisor": null,
+    "id_adquirente": null
 }
 ```
 

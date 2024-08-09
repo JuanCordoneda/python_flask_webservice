@@ -1,276 +1,145 @@
-{
-  "swagger": "2.0",
-  "info": {
-    "description": "Colección para interactuar con la API de Entidades",
-    "version": "1.0.0",
-    "title": "Entidades API",
-    "contact": {
-      "email": "tuemail@dominio.com"
-    }
-  },
-  "host": "127.0.0.1:5000",
-  "basePath": "/api",
-  "tags": [
-    {
-      "name": "entidades",
-      "description": "Operaciones relacionadas con entidades"
-    }
-  ],
-  "schemes": [
-    "http"
-  ],
-  "paths": {
-    "/entidades": {
-      "get": {
-        "tags": [
-          "entidades"
-        ],
-        "summary": "Obtener todas las entidades",
-        "description": "Obtiene una lista de todas las entidades con paginación",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Número de página",
-            "required": false,
-            "type": "integer",
-            "default": 1
-          },
-          {
-            "name": "per_page",
-            "in": "query",
-            "description": "Número de entidades por página",
-            "required": false,
-            "type": "integer",
-            "default": 10
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Token de autorización Bearer",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Lista de entidades",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "total": {
-                  "type": "integer",
-                  "description": "Número total de entidades"
-                },
-                "page": {
-                  "type": "integer",
-                  "description": "Número de la página actual"
-                },
-                "per_page": {
-                  "type": "integer",
-                  "description": "Número de entidades por página"
-                },
-                "entidades": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Entidad"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "entidades"
-        ],
-        "summary": "Crear una nueva entidad",
-        "description": "Crea una nueva entidad con los datos proporcionados",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Token de autorización Bearer",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Entidad a ser creada",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Entidad"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Entidad creada",
-            "schema": {
-              "$ref": "#/definitions/Entidad"
-            }
-          }
-        }
-      }
-    },
-    "/entidades/{entidad_id}": {
-      "delete": {
-        "tags": [
-          "entidades"
-        ],
-        "summary": "Eliminar una entidad",
-        "description": "Elimina una entidad por su ID",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "entidad_id",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "description": "ID de la entidad a eliminar"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Token de autorización Bearer",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Entidad eliminada correctamente"
-          },
-          "404": {
-            "description": "Entidad no encontrada"
-          }
-        }
-      }
-    }
-  },
-  "definitions": {
-    "Entidad": {
-      "type": "object",
-      "required": [
-        "NUMERO_PROSA",
-        "TIE_NUMERO",
-        "DESCRIPCION",
-        "NUMERO_FIID"
-      ],
-      "properties": {
-        "NUMERO_PROSA": {
-          "type": "number",
-          "format": "float",
-          "description": "El número PROSA de la entidad"
-        },
-        "TIE_NUMERO": {
-          "type": "integer",
-          "description": "El número TIE de la entidad"
-        },
-        "DESCRIPCION": {
-          "type": "string",
-          "description": "La descripción de la entidad"
-        },
-        "NUMERO_FIID": {
-          "type": "string",
-          "description": "El número FIID de la entidad"
-        },
-        "NUMERO_TSYS_EMI": {
-          "type": "string",
-          "description": "El número TSYS EMI de la entidad",
-          "nullable": true
-        },
-        "NUMERO_TSYS_ADQ": {
-          "type": "string",
-          "description": "El número TSYS ADQ de la entidad",
-          "nullable": true
-        },
-        "DESC_VENTAS": {
-          "type": "string",
-          "description": "La descripción de ventas de la entidad",
-          "nullable": true
-        },
-        "DESC_PAGOS": {
-          "type": "string",
-          "description": "La descripción de pagos de la entidad",
-          "nullable": true
-        },
-        "NUMERO_LN": {
-          "type": "string",
-          "description": "El número LN de la entidad",
-          "nullable": true
-        },
-        "GCO_NUMERO": {
-          "type": "number",
-          "format": "float",
-          "description": "El número GCO de la entidad",
-          "nullable": true
-        },
-        "ID_UNICO_CARNET": {
-          "type": "string",
-          "description": "El ID único CARNET de la entidad",
-          "nullable": true
-        },
-        "TRANSCOD": {
-          "type": "number",
-          "format": "float",
-          "description": "El TRANSCOD de la entidad",
-          "nullable": true
-        },
-        "CAMARA": {
-          "type": "integer",
-          "description": "La cámara de la entidad"
-        },
-        "ID_BANXICO": {
-          "type": "number",
-          "format": "float",
-          "description": "El ID BANXICO de la entidad",
-          "nullable": true
-        },
-        "ENV_BANXICO": {
-          "type": "number",
-          "format": "float",
-          "description": "El ENV BANXICO de la entidad"
-        },
-        "RED_MCD_ID_01": {
-          "type": "string",
-          "description": "El RED MCD ID 01 de la entidad",
-          "nullable": true
-        },
-        "RED_MCD_ID_02": {
-          "type": "string",
-          "description": "El RED MCD ID 02 de la entidad",
-          "nullable": true
-        },
-        "RED_VSA_ID_01": {
-          "type": "string",
-          "description": "El RED VSA ID 01 de la entidad",
-          "nullable": true
-        },
-        "AMEX_CAP": {
-          "type": "string",
-          "description": "El AMEX CAP de la entidad",
-          "nullable": true
-        },
-        "IND_COLLECTION": {
-          "type": "string",
-          "description": "El IND COLLECTION de la entidad",
-          "nullable": true
-        }
-      }
-    }
-  }
-}
+swagger: "2.0"
+info:
+  description: "Colección para interactuar con la API de Entidades"
+  version: "1.0.0"
+  title: "Entidades API"
+  contact:
+    email: "tuemail@dominio.com"
+host: "127.0.0.1:5000"
+basePath: "/api"
+tags:
+  - name: "entidades"
+    description: "Operaciones relacionadas con entidades"
+schemes:
+  - "http"
+paths:
+  /entidades:
+    get:
+      tags:
+        - "entidades"
+      summary: "Obtener todas las entidades"
+      description: "Obtiene una lista de todas las entidades con paginación"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "page"
+          in: "query"
+          description: "Número de página"
+          required: false
+          type: "integer"
+          default: 1
+        - name: "per_page"
+          in: "query"
+          description: "Número de entidades por página"
+          required: false
+          type: "integer"
+          default: 10
+        - name: "Authorization"
+          in: "header"
+          description: "Token de autorización Bearer"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Lista de entidades"
+          schema:
+            type: "object"
+            properties:
+              total:
+                type: "integer"
+                description: "Número total de entidades"
+              page:
+                type: "integer"
+                description: "Número de la página actual"
+              per_page:
+                type: "integer"
+                description: "Número de entidades por página"
+              entidades:
+                type: "array"
+                items:
+                  $ref: "#/definitions/Entidad"
+    post:
+      tags:
+        - "entidades"
+      summary: "Crear una nueva entidad"
+      description: "Crea una nueva entidad con los datos proporcionados"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "Authorization"
+          in: "header"
+          description: "Token de autorización Bearer"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Entidad a ser creada"
+          required: true
+          schema:
+            $ref: "#/definitions/Entidad"
+      responses:
+        201:
+          description: "Entidad creada"
+          schema:
+            $ref: "#/definitions/Entidad"
+  /entidades/{entidad_id}:
+    delete:
+      tags:
+        - "entidades"
+      summary: "Eliminar una entidad"
+      description: "Elimina una entidad por su ID"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "entidad_id"
+          in: "path"
+          required: true
+          type: "integer"
+          description: "ID de la entidad a eliminar"
+        - name: "Authorization"
+          in: "header"
+          description: "Token de autorización Bearer"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Entidad eliminada correctamente"
+        404:
+          description: "Entidad no encontrada"
+definitions:
+  Entidad:
+    type: "object"
+    required:
+      - "id_entidad"
+      - "nombre_entidad"
+      - "fiid_pos"
+      - "fiid_atm"
+      - "fiid_online"
+    properties:
+      id_entidad:
+        type: "integer"
+        description: "El ID de la entidad"
+      nombre_entidad:
+        type: "string"
+        description: "El nombre de la entidad"
+      fiid_pos:
+        type: "string"
+        description: "El número FIID POS de la entidad"
+      fiid_atm:
+        type: "string"
+        description: "El número FIID ATM de la entidad"
+      fiid_online:
+        type: "string"
+        description: "El número FIID Online de la entidad"
+      id_banxico:
+        type: "number"
+        format: "float"
+        description: "El ID BANXICO de la entidad"
+      id_emisor:
+        type: "string"
+        description: "El ID Emisor de la entidad"
+      id_adquirente:
+        type: "string"
+        description: "El ID Adquirente de la entidad"

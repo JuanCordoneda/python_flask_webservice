@@ -43,7 +43,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"NUMERO_PROSA\": 372.0,\n    \"TIE_NUMERO\": 1,\n    \"DESCRIPCION\": \"PRODUCTOS INTEGRALES\",\n    \"NUMERO_FIID\": \"B372\",\n    \"NUMERO_TSYS_EMI\": null,\n    \"NUMERO_TSYS_ADQ\": null,\n    \"DESC_VENTAS\": \"\",\n    \"DESC_PAGOS\": \"\",\n    \"NUMERO_LN\": \"PRO1\",\n    \"GCO_NUMERO\": 12.0,\n    \"ID_UNICO_CARNET\": null,\n    \"TRANSCOD\": null,\n    \"CAMARA\": 1,\n    \"ID_BANXICO\": 0.0,\n    \"ENV_BANXICO\": 1.0,\n    \"RED_MCD_ID_01\": null,\n    \"RED_MCD_ID_02\": null, \"RED_VSA_ID_01\": null, \"AMEX_CAP\": null, \"IND_COLLECTION\": null}"
+					"raw": "{\n    \"id_entidad\": 1,\n    \"nombre_entidad\": \"PRODUCTOS INTEGRALES\",\n    \"fiid_pos\": \"B372\",\n    \"fiid_atm\": \"ATM1\",\n    \"fiid_online\": \"ONLINE1\",\n    \"id_banxico\": 0.0,\n    \"id_emisor\": null,\n    \"id_adquirente\": null\n}"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:5000/api/entidades",
